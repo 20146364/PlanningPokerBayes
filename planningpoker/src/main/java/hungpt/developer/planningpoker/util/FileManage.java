@@ -40,10 +40,10 @@ public class FileManage {
             while ((line = reader.readNext()) != null) {
                 Resource resource = new Resource();
                 resource.setID(Integer.parseInt(line[0]));
-                resource.setAgileExperience(line[1]);
-                resource.setAgileSkill(Integer.parseInt(line[2]));
-                resource.setSkillLevel(Integer.parseInt(line[3]));
-                resource.setDailyMeeting(line[4]);
+                resource.setManagementExperience(line[1]);
+                resource.setHumanSkill(Integer.parseInt(line[2]));
+                resource.setProductivity(Integer.parseInt(line[3]));
+                resource.setTimPressure(line[4]);
                 resources.add(resource);
             }
         } finally {
@@ -138,69 +138,69 @@ public class FileManage {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        // Writer writer = null;
-        // int[][] taskId = { { 1, 2, 3 }, { 1, 2, 3 } };
-        // double[][] probability = { { 0.2, 0.3, 0.5 }, { 0.5, 0.4, 0.5 } };
-        // try {
-        // writer = new PrintWriter("test.csv");
-        //
-        // for (int i = 0; i < taskId.length; i++) {
-        // int[] tasks = taskId[i];
-        // StringBuilder task = new StringBuilder("Resource " + (i + 1) + ";");
-        // StringBuilder prob = new StringBuilder(";");
-        //
-        // for (int j = 0; j < tasks.length; j++) {
-        // if (tasks[j] <= 0) {
-        // break;
-        // }
-        // task.append("Task " + tasks[j] + ";");
-        // prob.append(String.valueOf(probability[i][j] * 100) + "%;");
-        // System.out.println(probability[i][j]);
-        // }
-        // task.append("\n");
-        // prob.append("\n");
-        // writer.append(task.toString());
-        // writer.append(prob.toString());
-        // writer.append("\n");
-        // }
-        // writer.append("\n");
-        // writer.append("\n");
-        // writer.append("Total;" + (0.5 * 100) + "%");
-        //
-        // } finally {
-        //
-        // writer.flush();
-        // writer.close();
-        // }
+//    public static void main(String[] args) throws IOException {
+//        // Writer writer = null;
+//        // int[][] taskId = { { 1, 2, 3 }, { 1, 2, 3 } };
+//        // double[][] probability = { { 0.2, 0.3, 0.5 }, { 0.5, 0.4, 0.5 } };
+//        // try {
+//        // writer = new PrintWriter("test.csv");
+//        //
+//        // for (int i = 0; i < taskId.length; i++) {
+//        // int[] tasks = taskId[i];
+//        // StringBuilder task = new StringBuilder("Resource " + (i + 1) + ";");
+//        // StringBuilder prob = new StringBuilder(";");
+//        //
+//        // for (int j = 0; j < tasks.length; j++) {
+//        // if (tasks[j] <= 0) {
+//        // break;
+//        // }
+//        // task.append("Task " + tasks[j] + ";");
+//        // prob.append(String.valueOf(probability[i][j] * 100) + "%;");
+//        // System.out.println(probability[i][j]);
+//        // }
+//        // task.append("\n");
+//        // prob.append("\n");
+//        // writer.append(task.toString());
+//        // writer.append(prob.toString());
+//        // writer.append("\n");
+//        // }
+//        // writer.append("\n");
+//        // writer.append("\n");
+//        // writer.append("Total;" + (0.5 * 100) + "%");
+//        //
+//        // } finally {
+//        //
+//        // writer.flush();
+//        // writer.close();
+//        // }
+//
+//        List<UserStory> list = FileManage.readStory("sprint9.csv");
+//        for (UserStory userStory : list) {
+//            System.out.println(userStory);
+//        }
+//
+//    }
 
-        List<UserStory> list = FileManage.readStory("sprint9.csv");
-        for (UserStory userStory : list) {
-            System.out.println(userStory);
-        }
 
-    }
-
-
-    private static List<Task> topoSort(List<Task> tasks) {
-        List<Task> sortedTasks = new ArrayList<Task>();
-        int numTasks = tasks.size();
-        Digraph g = new Digraph(numTasks);
-        for (Task task : tasks) {
-            g.addEdge(task.getPrecedence(), task.getID());
-        }
-        Topological sort = new Topological(g);
-        Iterable<Integer> orders = sort.order();
-        for (int n : orders) {
-            if (n == 0) continue;
-            for (Task task : tasks) {
-                if (task.getID() == n) {
-                    sortedTasks.add(task);
-                }
-            }
-        }
-        return sortedTasks;
-    }
+//    private static List<Task> topoSort(List<Task> tasks) {
+//        List<Task> sortedTasks = new ArrayList<Task>();
+//        int numTasks = tasks.size();
+//        Digraph g = new Digraph(numTasks);
+//        for (Task task : tasks) {
+//            g.addEdge(task.getPrecedence(), task.getID());
+//        }
+//        Topological sort = new Topological(g);
+//        Iterable<Integer> orders = sort.order();
+//        for (int n : orders) {
+//            if (n == 0) continue;
+//            for (Task task : tasks) {
+//                if (task.getID() == n) {
+//                    sortedTasks.add(task);
+//                }
+//            }
+//        }
+//        return sortedTasks;
+//    }
 
     /**
      * read userstory from file

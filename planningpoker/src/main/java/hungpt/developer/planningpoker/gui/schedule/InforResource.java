@@ -25,10 +25,10 @@ public class InforResource extends JFrame {
 	private Resource resource = null;
 	private static Resource resourceTemp = new Resource();
 	private List<Resource> listResource = null;
-	private JComboBox<String> cmbDaily = null;
-	private JComboBox<String> cmbWorkSkill = null;
-	private JComboBox<String> cmbAgileSkill = null;
-	private JComboBox<String> cmbAgileExp = null;
+	private JComboBox<String> cmbTimPressure = null;
+	private JComboBox<String> cmbProductivity = null;
+	private JComboBox<String> cmbHumanSkill = null;
+	private JComboBox<String> cmbManagerExp = null;
 	private JComboBox<String> cmbResource = null;
 	private boolean isDisplay = true;
 
@@ -64,71 +64,68 @@ public class InforResource extends JFrame {
 		cmbResource.setBounds(350, 60, 95, 20);
 		this.getContentPane().add(cmbResource);
 
-		cmbResource.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				int indexSelect = cmbResource.getSelectedIndex();
-				resource = listResource.get(indexSelect);
-				cmbAgileExp.setSelectedItem(resource.getAgileExperience());
-				cmbAgileSkill.setSelectedIndex(resource.getAgileSkill() - 1);
-				cmbWorkSkill.setSelectedIndex(resource.getSkillLevel() - 1);
-				cmbDaily.setSelectedItem(resource.getDailyMeeting());
-			}
+		cmbResource.addActionListener(arg0 -> {
+			int indexSelect = cmbResource.getSelectedIndex();
+			resource = listResource.get(indexSelect);
+			cmbManagerExp.setSelectedItem(resource.getManagementExperience());
+			cmbHumanSkill.setSelectedIndex(resource.getHumanSkill() - 1);
+			cmbProductivity.setSelectedIndex(resource.getProductivity() - 1);
+			cmbTimPressure.setSelectedItem(resource.getTimPressure());
 		});
 
-		JLabel lblAgileExp = new JLabel("Kinh nghiệm quản lý agile");
+		JLabel lblAgileExp = new JLabel("Kinh nghiệm quản lý");
 		lblAgileExp.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblAgileExp.setBounds(120, 90, 200, 20);
 		this.getContentPane().add(lblAgileExp);
 
-		cmbAgileExp = new JComboBox<String>();
-		cmbAgileExp.addItem("yes");
-		cmbAgileExp.addItem("no");
-		cmbAgileExp.setSelectedItem(resource.getAgileExperience());
-		cmbAgileExp.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		cmbAgileExp.setBounds(350, 90, 95, 20);
-		this.getContentPane().add(cmbAgileExp);
+		cmbManagerExp = new JComboBox<String>();
+		cmbManagerExp.addItem("yes");
+		cmbManagerExp.addItem("no");
+		cmbManagerExp.setSelectedItem(resource.getManagementExperience());
+		cmbManagerExp.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		cmbManagerExp.setBounds(350, 90, 95, 20);
+		this.getContentPane().add(cmbManagerExp);
 
-		JLabel lblAgileSkill = new JLabel("Kỹ năng agile");
+		JLabel lblAgileSkill = new JLabel("Năng lực của nhân viên");
 		lblAgileSkill.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblAgileSkill.setBounds(120, 120, 95, 20);
 		this.getContentPane().add(lblAgileSkill);
 
-		cmbAgileSkill = new JComboBox<String>();
+		cmbHumanSkill = new JComboBox<String>();
 		for (int i = 1; i <= 5; i++) {
-			cmbAgileSkill.addItem("Level " + i);
+			cmbHumanSkill.addItem("Level " + i);
 		}
-		cmbAgileSkill.setSelectedItem("Level " + resource.getAgileSkill());
-		cmbAgileSkill.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		cmbAgileSkill.setBounds(350, 120, 95, 20);
-		this.getContentPane().add(cmbAgileSkill);
+		cmbHumanSkill.setSelectedItem("Level " + resource.getHumanSkill());
+		cmbHumanSkill.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		cmbHumanSkill.setBounds(350, 120, 95, 20);
+		this.getContentPane().add(cmbHumanSkill);
 
-		JLabel lblWorkSkill = new JLabel("Kỹ năng công việc");
+		JLabel lblWorkSkill = new JLabel("Năng suất công việc");
 		lblWorkSkill.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblWorkSkill.setBounds(120, 150, 200, 20);
 		this.getContentPane().add(lblWorkSkill);
 
-		cmbWorkSkill = new JComboBox<String>();
+		cmbProductivity = new JComboBox<String>();
 		for (int i = 1; i <= 5; i++) {
-			cmbWorkSkill.addItem("Level " + i);
+			cmbProductivity.addItem("Level " + i);
 		}
-		cmbWorkSkill.setSelectedItem("Level " + resource.getSkillLevel());
-		cmbWorkSkill.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		cmbWorkSkill.setBounds(350, 150, 95, 20);
-		this.getContentPane().add(cmbWorkSkill);
+		cmbProductivity.setSelectedItem("Level " + resource.getProductivity());
+		cmbProductivity.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		cmbProductivity.setBounds(350, 150, 95, 20);
+		this.getContentPane().add(cmbProductivity);
 
-		JLabel lblDaily = new JLabel("Tham gia họp daily");
+		JLabel lblDaily = new JLabel("Áp lực thời gian");
 		lblDaily.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDaily.setBounds(120, 180, 200, 20);
 		this.getContentPane().add(lblDaily);
 
-		cmbDaily = new JComboBox<String>();
-		cmbDaily.addItem("yes");
-		cmbDaily.addItem("no");
-		cmbDaily.setSelectedItem(resource.getDailyMeeting());
-		cmbDaily.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		cmbDaily.setBounds(350, 180, 95, 20);
-		this.getContentPane().add(cmbDaily);
+		cmbTimPressure = new JComboBox<String>();
+		cmbTimPressure.addItem("yes");
+		cmbTimPressure.addItem("no");
+		cmbTimPressure.setSelectedItem(resource.getTimPressure());
+		cmbTimPressure.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		cmbTimPressure.setBounds(350, 180, 95, 20);
+		this.getContentPane().add(cmbTimPressure);
 
 		JButton btnChange = new JButton("Cập nhật");
 		btnChange.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -138,19 +135,19 @@ public class InforResource extends JFrame {
 		btnChange.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				resourceTemp.setAgileExperience(resource.getAgileExperience());
-				resourceTemp.setAgileSkill(resource.getAgileSkill());
-				resourceTemp.setSkillLevel(resource.getSkillLevel());
-				resourceTemp.setDailyMeeting(resource.getDailyMeeting());
+				resourceTemp.setManagementExperience(resource.getManagementExperience());
+				resourceTemp.setHumanSkill(resource.getHumanSkill());
+				resourceTemp.setProductivity(resource.getProductivity());
+				resourceTemp.setTimPressure(resource.getTimPressure());
 				resourceTemp.setID(resource.getID());
-				String agileExp = (String) cmbAgileExp.getSelectedItem();
-				String agileSkill = (String) cmbAgileSkill.getSelectedItem();
-				String workSkill = (String) cmbWorkSkill.getSelectedItem();
-				String daily = (String) cmbDaily.getSelectedItem();
-				resource.setAgileExperience(agileExp);
-				resource.setAgileSkill(Integer.parseInt(agileSkill.substring(6)));
-				resource.setSkillLevel(Integer.parseInt(workSkill.substring(6)));
-				resource.setDailyMeeting(daily);
+				String agileExp = (String) cmbManagerExp.getSelectedItem();
+				String agileSkill = (String) cmbHumanSkill.getSelectedItem();
+				String workSkill = (String) cmbProductivity.getSelectedItem();
+				String daily = (String) cmbTimPressure.getSelectedItem();
+				resource.setManagementExperience(agileExp);
+				resource.setHumanSkill(Integer.parseInt(agileSkill.substring(6)));
+				resource.setProductivity(Integer.parseInt(workSkill.substring(6)));
+				resource.setTimPressure(daily);
 				JOptionPane.showMessageDialog(null,
 						"Bạn vừa thay đổi thông tin về nguồn lực " + (cmbResource.getSelectedIndex() + 1)
 								+ ". Hãy quay lại màn hình schedule để theo dõi kết quả thực hiện các "
@@ -170,15 +167,15 @@ public class InforResource extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				resource.setAgileExperience(resourceTemp.getAgileExperience());
-				resource.setAgileSkill(resourceTemp.getAgileSkill());
-				resource.setSkillLevel(resourceTemp.getSkillLevel());
-				resource.setDailyMeeting(resourceTemp.getDailyMeeting());
+				resource.setManagementExperience(resourceTemp.getManagementExperience());
+				resource.setHumanSkill(resourceTemp.getHumanSkill());
+				resource.setProductivity(resourceTemp.getProductivity());
+				resource.setTimPressure(resourceTemp.getTimPressure());
 				if (cmbResource.getSelectedIndex() == resourceTemp.getID() - 1) {
-					cmbDaily.setSelectedItem(resourceTemp.getDailyMeeting());
-					cmbWorkSkill.setSelectedItem("Level " + resource.getSkillLevel());
-					cmbAgileSkill.setSelectedItem("Level " + resource.getAgileSkill());
-					cmbAgileExp.setSelectedItem(resource.getAgileExperience());
+					cmbTimPressure.setSelectedItem(resourceTemp.getTimPressure());
+					cmbProductivity.setSelectedItem("Level " + resource.getProductivity());
+					cmbHumanSkill.setSelectedItem("Level " + resource.getHumanSkill());
+					cmbManagerExp.setSelectedItem(resource.getManagementExperience());
 				}
 				FrameAgile.reLoad();
 

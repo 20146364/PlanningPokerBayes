@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Resource {
 	private int ID;
-	private String agileExperience; // Kinh nghiệm quản lí Agile
-	private int agileSkill; // Kĩ năng agile
-	private int skillLevel;// Mức độ kĩ năng công việc
-	private String dailyMeeting; // Tham dự họp thường xuyên
+	private String managementExperience; // Kinh nghiệm quản lí
+	private int humanSkill; // Năng lực nhân viên
+	private int productivity;// Năng suất
+	private String timPressure; // Áp lực thời gian
 	private ArrayList<Task> listTask; // danh sách các task phân bổ
 
 	public Resource() {
@@ -29,64 +29,36 @@ public class Resource {
 		ID = iD;
 	}
 
-	/**
-	 * @return the agileExperience
-	 */
-	public String getAgileExperience() {
-		return agileExperience;
+	public String getManagementExperience() {
+		return managementExperience;
 	}
 
-	/**
-	 * @param agileExperience
-	 *            the agileExperience to set
-	 */
-	public void setAgileExperience(String agileExperience) {
-		this.agileExperience = agileExperience;
+	public void setManagementExperience(String managementExperience) {
+		this.managementExperience = managementExperience;
 	}
 
-	/**
-	 * @return the agileSkill
-	 */
-	public int getAgileSkill() {
-		return agileSkill;
+	public int getHumanSkill() {
+		return humanSkill;
 	}
 
-	/**
-	 * @param agileSkill
-	 *            the agileSkill to set
-	 */
-	public void setAgileSkill(int agileSkill) {
-		this.agileSkill = agileSkill;
+	public void setHumanSkill(int humanSkill) {
+		this.humanSkill = humanSkill;
 	}
 
-	/**
-	 * @return the skillLevel
-	 */
-	public int getSkillLevel() {
-		return skillLevel;
+	public int getProductivity() {
+		return productivity;
 	}
 
-	/**
-	 * @param skillLevel
-	 *            the skillLevel to set
-	 */
-	public void setSkillLevel(int skillLevel) {
-		this.skillLevel = skillLevel;
+	public void setProductivity(int productivity) {
+		this.productivity = productivity;
 	}
 
-	/**
-	 * @return the dailyMeeting
-	 */
-	public String getDailyMeeting() {
-		return dailyMeeting;
+	public String getTimPressure() {
+		return timPressure;
 	}
 
-	/**
-	 * @param dailyMeeting
-	 *            the dailyMeeting to set
-	 */
-	public void setDailyMeeting(String dailyMeeting) {
-		this.dailyMeeting = dailyMeeting;
+	public void setTimPressure(String timPressure) {
+		this.timPressure = timPressure;
 	}
 
 	/**
@@ -115,10 +87,5 @@ public class Resource {
 			sum += task.getTime();
 		}
 		return sum;
-	}
-
-	public String toString() {
-		return "ID: " + this.ID + " agileExperience: " + agileExperience + " agileSkill: " + agileSkill
-				+ " skillLevel: " + skillLevel + " dailyMeeting: " + dailyMeeting;
 	}
 }

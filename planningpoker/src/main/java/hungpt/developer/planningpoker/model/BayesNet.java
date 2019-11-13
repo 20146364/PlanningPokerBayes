@@ -123,25 +123,25 @@ public class BayesNet {
 
 			// lấy ra các trạng thái tương ứng với resource và set các nhân tố
 			// tương ứng với resource đó
-			StateCollection stateNode19 = neti.getNodes().get("node19").getVariables().get(0).getStates();
-			StateCollection stateNode16 = neti.getNodes().get("node16").getVariables().get(0).getStates();
-			StateCollection stateNode7 = neti.getNodes().get("node7").getVariables().get(0).getStates();
-			StateCollection stateNode9 = neti.getNodes().get("node9").getVariables().get(0).getStates();
+			StateCollection stateNode14 = neti.getNodes().get("node14").getVariables().get(0).getStates();
+			StateCollection stateNode1 = neti.getNodes().get("node1").getVariables().get(0).getStates();
+			StateCollection stateNode4 = neti.getNodes().get("node4").getVariables().get(0).getStates();
+			StateCollection stateNode3 = neti.getNodes().get("node3").getVariables().get(0).getStates();
 
-			State valueNode19 = stateNode19.get(resources.get(i).getAgileExperience());
-			State valueNode16 = stateNode16.get(Integer.toString(resources.get(i).getAgileSkill()));
-			State valueNode7 = stateNode7.get(Integer.toString(resources.get(i).getSkillLevel()));
-			State valueNode9 = stateNode9.get(resources.get(i).getDailyMeeting());
+			State valueNode14 = stateNode14.get(resources.get(i).getManagementExperience());
+			State valueNode1 = stateNode1.get(Integer.toString(resources.get(i).getHumanSkill()));
+			State valueNode4 = stateNode4.get(Integer.toString(resources.get(i).getProductivity()));
+			State valueNode3 = stateNode3.get(resources.get(i).getTimPressure());
 
-			inference.getEvidence().setState(valueNode19);
-			inference.getEvidence().setState(valueNode16);
-			inference.getEvidence().setState(valueNode7);
-			inference.getEvidence().setState(valueNode9);
+			inference.getEvidence().setState(valueNode14);
+			inference.getEvidence().setState(valueNode1);
+			inference.getEvidence().setState(valueNode4);
+			inference.getEvidence().setState(valueNode3);
 
 			// duyệt các task được giao và thực hiện suy diễn với resource đó
 			// rồi gán vào mảng lưu kết quả
 			for (int j = 0; j < numTasks - 1; j++) {
-				String nameTask = "task" + Integer.toString(j);
+				String nameTask = "task" + j;
 				Table queryTaskj = new Table(neti.getNodes().get(nameTask));
 				inference.getQueryDistributions().add(queryTaskj);
 				inference.query(queryOptions, queryOutput);
